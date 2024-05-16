@@ -1,17 +1,17 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { UsersService } from './users.service';
 
 @Controller()
 export class UsersController {
-    constructor(private readonly userService: UsersService) { }
+  constructor(private readonly userService: UsersService) {}
 
-    @Get('/users/get-users')
-    getAllData(): string {
-        return this.userService.findAll();
-    }
+  @Get('/users/get-users')
+  getAllData(): any {
+    return this.userService.findAll();
+  }
 
-    @Get(':id')
-    findOne(@Param('id') id: number): string {
-        return 'This action returns one post';
-    }
+  @Get('/users/create-users')
+  createUserData(): any {
+    return this.userService.createUser();
+  }
 }

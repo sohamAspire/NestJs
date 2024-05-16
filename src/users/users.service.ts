@@ -1,14 +1,26 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { User_Model } from 'models/User_Model';
 
 @Injectable()
 export class UsersService {
-    private readonly posts: any;
+  constructor(
+    @Inject('USER_REPOSITORY')
+    private userRepository: typeof User_Model,
+  ) {}
 
-    create(post: any) {
-        this.posts.push(post);
-    }
+  async findAll(): Promise<any> {
+    const response = this.userRepository.findAll();
+    return response;
+  }
 
-    findAll(): any {
-        return 'Success';
-    }
+  async createUser(): Promise<any> {
+    const response = this.userRepository.create({
+      id: 'usr~423434234',
+      name: 'asdas',
+      email: 'asdas@gmail.com',
+      phone: 13423123213,
+      active: true,
+    });
+    return response;
+  }
 }
