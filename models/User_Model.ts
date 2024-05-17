@@ -1,6 +1,6 @@
 import { Table, Column, Model } from 'sequelize-typescript';
 
-@Table({ tableName: 'users' })
+@Table({ tableName: 'users', timestamps: true })
 export class User_Model extends Model {
   @Column({ primaryKey: true, unique: true })
   id: string;

@@ -10,8 +10,8 @@ export const databaseProviders = [
         host: 'localhost',
         port: 5432,
         username: 'postgres',
-        password: '8980',
-        database: 'CRUD',
+        password: process.env.DATABASE_PASSWORD,
+        database: process.env.DATABASE_NAME,
         logging: false,
       });
       sequelize.addModels([User_Model]);
